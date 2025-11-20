@@ -129,7 +129,11 @@ class ConsoleRunner
             return;
         }
 
-        $cli->add(new DiffCommand($dependencyFactory));
+        if (method_exists(Application::class, 'addCommand')) {
+            $cli->addCommand(new DiffCommand($dependencyFactory));
+        } else {
+            $cli->add(new DiffCommand($dependencyFactory));
+        }
     }
 
     private static function checkLegacyConfiguration(mixed $dependencyFactory, string $configurationFile): mixed
