@@ -54,6 +54,10 @@ class OrmSchemaProviderTest extends MigrationTestCase
         $this->config = ORMSetup::createXMLMetadataConfiguration([__DIR__ . '/_files'], true);
         $this->config->setClassMetadataFactoryName(ClassMetadataFactory::class);
 
+        if (PHP_VERSION_ID >= 80400) {
+            $this->config->enableNativeLazyObjects(true);
+        }
+
         $this->conn          = $this->getSqliteConnection();
         $this->entityManager = new EntityManager($this->conn, $this->config);
         $this->ormProvider   = new OrmSchemaProvider($this->entityManager);
