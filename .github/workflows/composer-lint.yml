@@ -8,8 +8,6 @@ on:
       - .github/workflows/composer-lint.yml
       - composer.json
   push:
-    branches:
-      - "*.x"
     paths:
       - .github/workflows/composer-lint.yml
       - composer.json

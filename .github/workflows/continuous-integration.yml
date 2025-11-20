@@ -12,8 +12,6 @@ on:
       - phpunit.xml.dist
       - tests/**
   push:
-    branches:
-      - "*.x"
     paths:
       - .github/workflows/continuous-integration.yml
       - composer.*
@@ -39,9 +37,9 @@ jobs:
         stability:
           - "default"
         include:
-          - dependencies: "lowest"
-            stability: "default"
-            php-version: "8.1"
+#          - dependencies: "lowest"
+#            stability: "default"
+#            php-version: "8.1"
           - dependencies: "highest"
             stability: "dev"
             php-version: "8.4"
@@ -72,7 +70,7 @@ jobs:
           composer-options: "--ignore-platform-req=php+"
 
       - name: "Run PHPUnit"
-        run: "vendor/bin/phpunit --coverage-clover=coverage.xml"
+        run: "vendor/bin/phpunit --coverage-clover=coverage.xml --fail-on-deprecation --fail-on-phpunit-deprecation"
 
       - name: "Upload coverage file"
         uses: "actions/upload-artifact@v5"

@@ -12,8 +12,6 @@ on:
       - phpstan*
       - tests/**
   push:
-    branches:
-      - "*.x"
     paths:
       - .github/workflows/static-analysis.yml
       - composer.*

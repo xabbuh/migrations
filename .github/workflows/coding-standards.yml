@@ -13,8 +13,6 @@ on:
       - phpcs.xml.dist
       - tests/**
   push:
-    branches:
-      - "*.x"
     paths:
       - .github/workflows/coding-standards.yml
       - bin/**
